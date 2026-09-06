@@ -1,0 +1,507 @@
+/* ============================================================
+   APEX SCIENCE ACADEMY
+   RESPONSIVE STYLES
+============================================================ */
+
+
+/* ============================================================
+   LARGE LAPTOP
+============================================================ */
+
+@media (max-width: 1200px) {
+
+    .hero-container {
+        gap: 45px;
+    }
+
+
+    .hero-content h1 {
+        font-size:
+            clamp(
+                3.7rem,
+                7vw,
+                6rem
+            );
+    }
+
+
+    .hero-image-frame,
+    .hero-school-image {
+        height: 580px;
+        min-height: 580px;
+    }
+
+}
+
+
+/* ============================================================
+   TABLETS / SMALL LAPTOPS
+============================================================ */
+
+@media (max-width: 950px) {
+
+    .desktop-nav,
+    .quick-access {
+        display: none;
+    }
+
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+
+    .mobile-nav {
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+        right: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        padding:
+            12px 25px 25px;
+
+        background:
+            rgba(3,5,10,.96);
+
+        border-bottom:
+            1px solid var(--line);
+
+        backdrop-filter:
+            blur(20px);
+
+        transform:
+            translateY(-15px);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition:
+            opacity .3s ease,
+            visibility .3s ease,
+            transform .3s ease;
+    }
+
+
+    .mobile-nav.open {
+        opacity: 1;
+        visibility: visible;
+
+        transform:
+            translateY(0);
+    }
+
+
+    .mobile-nav a {
+        padding:
+            14px 5px;
+
+        color: var(--muted);
+
+        text-decoration: none;
+
+        font-size: .95rem;
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.045);
+
+        transition:
+            color .25s ease,
+            padding-left .25s ease;
+    }
+
+
+    .mobile-nav a:hover {
+        color: white;
+
+        padding-left: 10px;
+    }
+
+
+    .mobile-nav-divider {
+        height: 12px;
+    }
+
+
+    .hero-section {
+        padding-top: 125px;
+    }
+
+
+    .hero-container {
+        grid-template-columns: 1fr;
+
+        width:
+            min(
+                100% - 50px,
+                760px
+            );
+
+        gap: 65px;
+    }
+
+
+    .hero-content {
+        text-align: center;
+    }
+
+
+    .hero-eyebrow {
+        justify-content: center;
+    }
+
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+
+    .hero-meta {
+        justify-content: center;
+    }
+
+
+    .hero-visual {
+        width: 100%;
+    }
+
+
+    .hero-image-frame,
+    .hero-school-image {
+        height: 600px;
+        min-height: 600px;
+    }
+
+
+    .intro-layout {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .pathways-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .vision-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .footer-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .footer-location {
+        text-align: left;
+    }
+
+}
+
+
+/* ============================================================
+   PHONES
+============================================================ */
+
+@media (max-width: 650px) {
+
+    .header-inner {
+        width:
+            calc(100% - 32px);
+    }
+
+
+    .brand-text strong {
+        font-size: .85rem;
+    }
+
+
+    .brand-text span {
+        font-size: .45rem;
+    }
+
+
+    .hero-section {
+        min-height: auto;
+
+        padding:
+            120px 0
+            80px;
+    }
+
+
+    .hero-container,
+    .section-container {
+        width:
+            min(
+                100% - 32px,
+                560px
+            );
+    }
+
+
+    .hero-content h1 {
+        font-size:
+            clamp(
+                3.1rem,
+                15vw,
+                5rem
+            );
+    }
+
+
+    .hero-description {
+        font-size: 1rem;
+
+        line-height: 1.75;
+    }
+
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+
+    .btn {
+        width: 100%;
+    }
+
+
+    .hero-meta {
+        gap: 15px;
+    }
+
+
+    .hero-meta-item strong {
+        font-size: 1rem;
+    }
+
+
+    .hero-meta-item span {
+        font-size: .62rem;
+    }
+
+
+    .hero-image-frame,
+    .hero-school-image {
+        height: 470px;
+        min-height: 470px;
+    }
+
+
+    .hero-floating-card {
+        left: 16px;
+        bottom: 16px;
+
+        min-width: 0;
+
+        max-width:
+            calc(100% - 32px);
+
+        padding:
+            16px 17px;
+    }
+
+
+    .hero-scroll {
+        display: none;
+    }
+
+
+    .intro-section,
+    .pathways-section,
+    .vision-section {
+        padding:
+            95px 0;
+    }
+
+
+    .section-heading h2 {
+        font-size:
+            clamp(
+                2.7rem,
+                12vw,
+                4.2rem
+            );
+    }
+
+
+    .intro-layout {
+        margin-top: 55px;
+    }
+
+
+    .intro-large-text p {
+        font-size: 1.65rem;
+    }
+
+
+    .pathways-grid {
+        margin-top: 50px;
+    }
+
+
+    .pathway-card {
+        min-height: 0;
+    }
+
+
+    .pathway-image {
+        height: 250px;
+    }
+
+
+    .pathway-content {
+        padding:
+            25px 22px 28px;
+    }
+
+
+    .pathway-content h3 {
+        font-size: 2.2rem;
+    }
+
+
+    .vision-card {
+        min-height: 350px;
+
+        padding:
+            30px 25px;
+    }
+
+
+    .vision-card h3 {
+        margin-top: 50px;
+    }
+
+
+    .image-moment,
+    .image-moment img {
+        min-height: 500px;
+        height: 500px;
+    }
+
+
+    .image-moment-content {
+        left: 20px;
+        right: 20px;
+        bottom: 50px;
+    }
+
+
+    .image-moment-content h2 {
+        font-size: 3.2rem;
+    }
+
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+
+
+    .back-to-top {
+        right: 16px;
+        bottom: 16px;
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONES
+============================================================ */
+
+@media (max-width: 420px) {
+
+    .hero-section {
+        padding-top: 105px;
+    }
+
+
+    .hero-meta-divider {
+        display: none;
+    }
+
+
+    .hero-meta {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap: 8px;
+    }
+
+
+    .hero-meta-item {
+        text-align: center;
+    }
+
+
+    .hero-image-frame,
+    .hero-school-image {
+        height: 390px;
+        min-height: 390px;
+    }
+
+
+    .pathway-levels span {
+        font-size: .65rem;
+    }
+
+
+    .image-moment-content h2 {
+        font-size: 2.7rem;
+    }
+
+}
+
+
+/* ============================================================
+   LARGE DESKTOPS
+============================================================ */
+
+@media (min-width: 1600px) {
+
+    .hero-container {
+        gap: 110px;
+    }
+
+
+    .hero-content h1 {
+        font-size: 7.5rem;
+    }
+
+
+    .hero-description {
+        font-size: 1.25rem;
+    }
+
+
+    .section-container,
+    .hero-container {
+        width:
+            min(
+                1480px,
+                calc(100% - 100px)
+            );
+    }
+
+}
