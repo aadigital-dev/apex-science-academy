@@ -1,3 +1,4 @@
+
 /* =========================================================
    APEX SCIENCE ACADEMY
    ADMISSIONS PAGE SCRIPT
@@ -5,42 +6,123 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   /* =====================================================
-       ADMISSION ENQUIRY DEMO
-    ===================================================== */
+     ADMISSIONS FORM — SUPABASE CONNECTION
+  ===================================================== */
 
   const admissionForm = document.getElementById("admissionForm");
-
   const formMessage = document.getElementById("formMessage");
 
+  const submitUrl =
+    "https://mmmhwamuixquhsjbtmaq.supabase.co/functions/v1/submit-admission";
+
   if (admissionForm && formMessage) {
-    admissionForm.addEventListener("submit", (event) => {
+    admissionForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      const studentName = document.getElementById("studentName")?.value.trim();
+      if (admissionForm.dataset.submitting === "true") {
+        return;
+      }
 
-      const programme = document.getElementById("programme")?.value.trim();
+      const studentName =
+        document.getElementById("studentName")?.value.trim() || "";
 
-      if (!studentName || !programme) {
+      const parentName =
+        document.getElementById("parentName")?.value.trim() || "";
+
+      const phone =
+        document.getElementById("phone")?.value.trim() || "";
+
+      const programme =
+        document.getElementById("programme")?.value.trim() || "";
+
+      const classLevel =
+        document.getElementById("classLevel")?.value.trim() || "";
+
+      const message =
+        document.getElementById("message")?.value.trim() || "";
+
+      formMessage.classList.add("show");
+      formMessage.setAttribute("role", "status");
+
+      if (
+        !studentName ||
+        !parentName ||
+        !phone ||
+        !programme ||
+        !classLevel
+      ) {
         formMessage.textContent =
-          "Please enter the student's name and select a programme of interest.";
-
-        formMessage.classList.add("show");
+          "Please complete the student name, parent/guardian name, phone number, programme and desired class.";
 
         return;
       }
 
-      formMessage.textContent =
-        "Your enquiry has been prepared successfully. The official submission connection will be added in a later development stage.";
+      const submitButton = admissionForm.querySelector(
+        'button[type="submit"]'
+      );
 
-      formMessage.classList.add("show");
+      const originalButtonText = submitButton
+        ? submitButton.innerHTML
+        : "";
 
-      admissionForm.reset();
+      admissionForm.dataset.submitting = "true";
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Submitting...";
+      }
+
+      formMessage.textContent = "Submitting your enquiry. Please wait.";
+
+      try {
+        const response = await fetch(submitUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            studentName,
+            parentName,
+            phone,
+            programme,
+            classLevel,
+            message,
+          }),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || result.success !== true) {
+          throw new Error(
+            result.error ||
+              "We could not submit your enquiry. Please try again."
+          );
+        }
+
+        formMessage.textContent =
+          "Your enquiry was submitted successfully. Thank you for contacting APEX Science Academy Zaria.";
+
+        admissionForm.reset();
+      } catch (error) {
+        console.error("Admissions submission error:", error);
+
+        formMessage.textContent =
+          error.message ||
+          "Unable to submit your enquiry. Please check your internet connection and try again.";
+      } finally {
+        admissionForm.dataset.submitting = "false";
+
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
+        }
+      }
     });
   }
 
   /* =====================================================
-       SMOOTH ANCHOR FALLBACK
-    ===================================================== */
+     SMOOTH ANCHOR FALLBACK
+  ===================================================== */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
